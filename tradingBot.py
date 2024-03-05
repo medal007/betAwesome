@@ -68,11 +68,23 @@ def type_amount(driver, path, value=""):
     enter_field.send_keys(value)
     return enter_field
 
-def click(driver, path):
-    # Find the login button and click it
-    click_button = driver.find_element("xpath", path)
-    click_button.click()
-    return click_button
+def click(driver, path, max_attempts=3):
+    attempts = 0
+    while attempts < max_attempts:
+        try:
+            # Find the login button
+            click_button = WebDriverWait(driver, 10).until(
+                EC.visibility_of_element_located((By.XPATH, path))
+            )
+            # Click the button
+            click_button.click()
+            return click_button
+        except (NoSuchElementException, TimeoutException):
+            print("Element not found or not clickable. Retrying...")
+            attempts += 1
+            time.sleep(1)  # Wait before retrying
+    print(f"Failed to click element after {max_attempts} attempts.")
+    return None
 
 def select_text(driver, path, text=""):
     select_text = driver.find_element("xpath", path)
@@ -194,7 +206,7 @@ async def handle_new_messages(event):
         print("Level 3:", level3)
 
         click(driver, "//span[@class='current-symbol current-symbol_cropped']")
-        time.sleep(1)
+        time.sleep(2)
         type_field(driver, "//input[@placeholder='Search']", asset)
 
         click(driver, "//div[@id='modal-root']//li[1]//a[1]")
