@@ -194,10 +194,11 @@ async def handle_new_messages(event):
         print("Level 3:", level3)
 
         click(driver, "//span[@class='current-symbol current-symbol_cropped']")
+        time.sleep(1)
         type_field(driver, "//input[@placeholder='Search']", asset)
 
         click(driver, "//div[@id='modal-root']//li[1]//a[1]")
-        time.sleep(5)
+        time.sleep(6)
         driver.get(url)
 
         if level == 0:
@@ -256,7 +257,7 @@ async def handle_new_messages(event):
 
             type_amount(driver, "//input[@value='$2']", "4")
 
-            time.sleep(2)
+            time.sleep(1)
 
             if "HIGH" in signal:
                 click(driver, "//a[@class='btn btn-call']//span[@class='switch-state-block__item']")
@@ -274,7 +275,7 @@ async def handle_new_messages(event):
                 level = 2
                 type_amount(driver, "//input[@value='$4']", "8")
 
-                time.sleep(2)
+                time.sleep(1)
                 if "HIGH" in signal:
                     click(driver, "//a[@class='btn btn-call']//span[@class='switch-state-block__item']")
                 elif "LOW" in signal:
@@ -291,7 +292,7 @@ async def handle_new_messages(event):
                     level = 3
                     type_amount(driver, "//input[@value='$8']", "16")
 
-                    time.sleep(2)
+                    time.sleep(1)
                     if "HIGH" in signal:
                         click(driver, "//a[@class='btn btn-call']//span[@class='switch-state-block__item']")
                     elif "LOW" in signal:
