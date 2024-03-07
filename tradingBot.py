@@ -85,9 +85,9 @@ def select_text(driver, path, text=""):
 
 url = "https://pocketoption.com/en/cabinet/quick-high-low/"
 
-type_field(driver, "//input[@placeholder='Email *']", "tmedal007@gmail.com")
+type_field(driver, "//input[@placeholder='Email *']", "trial@example.com")
 
-type_field(driver, "//input[@placeholder='Password *']", "M2d1l@119500")
+type_field(driver, "//input[@placeholder='Password *']", "Password")
 
 click(driver, "//button[normalize-space()='Sign In']")
 
@@ -100,8 +100,8 @@ time.sleep(2)
 click(driver, "//div[@class='block__control control js-tour-block--expiration-inputs']//a")
 
 api_id = '19692955'
-api_hash = '28879afa9679b80fdb5e55810f322808'
-phone_number = '+23278672866'
+api_hash = 'telegramhashhhhcode'
+phone_number = '+3444444444444'
 
 client = TelegramClient('session_name', api_id, api_hash)
 
